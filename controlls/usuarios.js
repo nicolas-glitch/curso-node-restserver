@@ -1,49 +1,77 @@
 const {response, request} = require('express');
+const becryptjs = require('bcryptjs');
 
+const Usuario = require('../models/usuario');
+const { all } = require('../routes/usuarios');
 
-
-const usuariosGet =((req= request, res = response) => {
-               const {q,nombre,edad} = req.query; 
+//mostrar usuarios
+const usuariosGet = async(req= request, res = response) => {
+               const {limite, desde} = req.query; 
+               const query = {estado:true}; 
+               const [usuarios,total] = await Promise.all([
+                                Usuario.find(query),
+                                Usuario.countDocuments(query)
+                                .skip(Number(desde)) 
+                                .limit(Number(limite))
+            ]);                 
                res.json({
-                informacion: 'Api desde get-controlls',
-                q,
-                nombre,
-                edad
-
+                total,
+                usuarios
             });
-});
+};
 
-const usuariosPost =((req, res) => {
 
-        const {nombre,edad} = req.body;     
+// agregar usuario
+const usuariosPost = async (req, res) => {
+
+        const {nombre, correo, contraseña,rol} = req.body;  
+        const usuario = new Usuario({nombre,correo,contraseña,rol}); 
+
+        //Encriptar la contraseña
+        const salt = becryptjs.genSaltSync();
+        usuario.contraseña = becryptjs.hashSync(contraseña,salt);
+
+        //guardar db
+        await usuario.save();
         res.json({
-            informacion: 'Api desde post-controlls',
-            nombre,
-            edad
+            usuario
+
          
         });
-    });
+    };
 
-const usuariosPut = ( (req, res) => {
+    //actualizar usuario
+const usuariosPut =  async(req, res) => {
         const {id} = req.params;
+        const {_id,contraseña,google, ...resto} = req.body
+        //validar contra base de datos
+        if(contraseña){
+            const salt = becryptjs.genSaltSync();
+            resto.contraseña = becryptjs.hashSync(contraseña,salt);
+        }
+        const usuarioActualizado = await Usuario.findByIdAndUpdate(id,resto);
+
         res.json({
             informacion: 'Api desde put-controlls',
-            id
+            id,
+            usuarioActualizado
         });
-    });
+    };
 
-const usuariosPatch = ((req, res) => {
+const usuariosPatch = (req, res) => {
         res.status(401).json({
             informacion: 'Api desde patch-controlls'
         });
-    });
+    };
 
 
-const usuariosDelete = ( (req, res) => {
+const usuariosDelete =  async(req, res) => {
+        const {id} = req.params;
+        const usuarioBorrado = await Usuario.findByIdAndUpdate(id, {estado :false})
         res.json({
-            informacion: 'Api desde delete-controlls'
+            usuarioBorrado
         });
-    });
+    };
 
 
 module.exports = {
