@@ -4,7 +4,10 @@ const { validarRol,
         existeEmail, 
         actualizarExisteID 
         } = require('../helpers/validar-rol');
-const {errorUsuario} = require('../middlewares/error-usuario')
+const {validarToken,errorUsuario,validarRoles,validarTodos}= require('../middlewares')
+// const { validarToken } = require('../middlewares/validar-token');
+// const {errorUsuario} = require('../middlewares/error-usuario');
+// const {validarRoles,validarTodos } = require('../middlewares/validar-rol');
 const {usuariosGet,
        usuariosPost,
        usuariosPut,
@@ -12,9 +15,10 @@ const {usuariosGet,
        usuariosDelete
       } = require('../controlls/usuarios');
 
+
 const router = Router();
 
-    router.get('/', usuariosGet);
+    router.get('/',usuariosGet);
     //check de post
     router.post('/',[
         check('nombre','El campo del nombre es obligatorio').not().isEmpty(),
@@ -29,11 +33,15 @@ const router = Router();
         check('id','no es un id valido').isMongoId(),
         check('id').custom(actualizarExisteID),
         check('nombre','El campo del nombre es obligatorio').not().isEmpty(),
-        check('correo').custom(existeEmail).isEmail(),
+        check('correo').isEmail(),
         check('rol').custom(validarRol),
         errorUsuario
     ],usuariosPut);
+    //check delete
     router.delete('/:id',[
+        validarToken,
+        //validarRoles,
+        validarTodos('ADMIN_ROL','USER_ROL','VENTAS_ROL'),
         check('id','no es un id valido').isMongoId(),
         check('id').custom(actualizarExisteID),
         check('rol').custom(validarRol),

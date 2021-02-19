@@ -14,10 +14,7 @@ const usuariosGet = async(req= request, res = response) => {
                                 .skip(Number(desde)) 
                                 .limit(Number(limite))
             ]);                 
-               res.json({
-                total,
-                usuarios
-            });
+               res.json({total,usuarios});
 };
 
 
@@ -33,11 +30,7 @@ const usuariosPost = async (req, res) => {
 
         //guardar db
         await usuario.save();
-        res.json({
-            usuario
-
-         
-        });
+        res.json({usuario});
     };
 
     //actualizar usuario
@@ -51,11 +44,7 @@ const usuariosPut =  async(req, res) => {
         }
         const usuarioActualizado = await Usuario.findByIdAndUpdate(id,resto);
 
-        res.json({
-            informacion: 'Api desde put-controlls',
-            id,
-            usuarioActualizado
-        });
+        res.json({usuarioActualizado});
     };
 
 const usuariosPatch = (req, res) => {
@@ -67,10 +56,10 @@ const usuariosPatch = (req, res) => {
 
 const usuariosDelete =  async(req, res) => {
         const {id} = req.params;
-        const usuarioBorrado = await Usuario.findByIdAndUpdate(id, {estado :false})
-        res.json({
-            usuarioBorrado
-        });
+        
+        const usuarioBorrado = await Usuario.findByIdAndUpdate(id, {estado :false});
+
+        res.json(usuarioBorrado);
     };
 
 

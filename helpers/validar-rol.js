@@ -15,7 +15,7 @@ const validarRol=async(rol ='') =>{
          throw new Error(`El correo ${correo} ya existe`);
      }
  }
-// verificvar si id existe
+// verificar si id existe
  const actualizarExisteID =async(id) =>{
     const existeId = await Usuario.findById(id);
     if(!existeId){
