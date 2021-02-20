@@ -15,7 +15,7 @@ const validarToken = async(req=request,res=response,netx)=> {
        
 
        const usuario = await Usuario.findById(uid);
-       //si uid existe en la base de datos
+       //si uid existe en la base de datos                                              
        if(!usuario){
            res.status(401).json({
                msg:'el id no existe en la base de datos'
