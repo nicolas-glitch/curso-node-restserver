@@ -41,10 +41,10 @@ const router = Router();
     router.delete('/:id',[
         validarToken,
         //validarRoles,
+        check('rol').custom(validarRol),
         validarTodos('ADMIN_ROL','USER_ROL','VENTAS_ROL'),
         check('id','no es un id valido').isMongoId(),
         check('id').custom(actualizarExisteID),
-        check('rol').custom(validarRol),
         errorUsuario
     ], usuariosDelete);
     router.patch('/', usuariosPatch);
