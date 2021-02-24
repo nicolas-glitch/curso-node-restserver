@@ -37,12 +37,21 @@ const productoExisteID =async(id) =>{
         throw new Error(`No existe una producto con el id:${id}`);
     }
 }
+
+const validarColecciones = (coleccion='',colecciones=[])=>{
+    const incluye =  colecciones.includes(coleccion);
+    if(!incluye){
+        throw new Error(`La colección ${coleccion}, no existe, intente con estas ${colecciones}`);
+    }
+    return true;
+}
 module.exports={
     validarRol,
     existeEmail,
     actualizarExisteID,
     categoriaExisteID,
-    productoExisteID
+    productoExisteID,
+    validarColecciones
     
 }
 
