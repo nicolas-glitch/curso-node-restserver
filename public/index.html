@@ -5,49 +5,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name = "google-signin-client_id" content = "59888765598-2913016ab54f0htpee1asfthf58s3mse.apps.googleusercontent.com">
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/normalize.css">
+    <meta name="x-token" content="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MDJlODc5ZDY4OWUyNzAwYjA1NGQ1YjIiLCJpYXQiOjE2MTQ1MzAzNjEsImV4cCI6MTYxNDYxNjc2MX0.5vCoAm-CfZpTtxG80e1fG2AIj8YzIoknuVeAsbQxGXg">
+
     <title>Google sign-in</title>
 </head>
 <body>
-    <h1>Google sign-in</h1>
+    <div class="contenedor">
+        <!-- header de la página web server -->
+        <header class="pa--header">
+                <div class="header">
+                    <h1 class="no-margin no-padding header__h1">Mercadeo</h1>
+                    <p class="no-margin no-padding header__p">Crea tu cuenta con nosotros</p>
+                </div>
+        </header>
+
+        <!-- nav de la página web server -->
+        <nav class="pa--nav">
+            <div class="nav__p">
+                <a class="nav__p--logo" href="index.html"> <span class="nav__p--span--m">mercadeo</span><span class="nav__p--span">.com</span></a>
+                <div class="nav">
+                    <a class="nav__enlaces" href="index.html">Usuarios</a>
+                    <a class="nav__enlaces" href="index.html">Categorias</a>
+                    <a class="nav__enlaces" href="index.html">Productos</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- main de la página web server -->
+    <main>
+        <div class="formularios">
+            <form class="formulario__dos">
+                <h2 class="formulario__dos--h2 no-margin no-padding">Cuenta mercadeo</h2>
+                <!-- label nombre -->
+                <label class="formulario__dos--label">nombre</label>
+                <input class="formulario__dos--input" type="text" name="nombre" placeholder="nombre">
+                <!-- label correo -->
+                <label class="formulario__dos--label">correo</label>
+                <input class="formulario__dos--input" type="text" name="correo" placeholder="correo">
+                <!-- label contraseña -->
+                <label class="formulario__dos--label" >contraseña</label>
+                <input class="formulario__dos--input" type="password" name="contraseña" placeholder="contraseña">
+                <!-- label rol -->
+                <label class="formulario__dos--label" >Rol</label>
+                <input class="formulario__dos--input" type="text" name="rol" placeholder="contraseña">
+                <!-- boton sumbit -->
+                <button class="formulario__dos--button boton" type="sumbit">
+                    enviar
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!--footer de la página web-->
+    <footer class="p--footer">
+        <div class="nav__footer">
+            <a class="nav__footer--enlaces" href="index.html">Usuarios</a>
+            <a class="nav__footer--enlaces" href="index.html">Categorias</a>
+            <a class="nav__footer--enlaces" href="index.html">Productos</a>
+        </div>
+            <h3 class="nav__footer--h1">Todos los derechos reservados a <span>mercadeo</span></h3>
+    </footer>
+
+
+    <script src="javascript/index.js"></script>
+
+    <!--Aquí van los scripts-->
     
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
-
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <a href="#" onclick="signOut();">Sign out</a>
-    <script>
-        console.log(window.location.hostname.includes('localhost'));
-         let url = (window.location.hostname.includes('localhost'))
-                    ? 'http://localhost:8080/api/auth/google'
-                    : 'https://restserver2-node.herokuapp.com/api/auth/google';
-
-
-        function onSignIn(googleUser) {
-            let profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-            let id_token = googleUser.getAuthResponse().id_token;
-            console.log(id_token);
-            const data = {id_token}
-            fetch(url,{
-                method: 'POST',
-                headers:{'Content-Type':'application/json'},
-                body: JSON.stringify(data),
-            })
-            .then(res => res.json())
-            .then(data => console.log('Nuestro server', data))
-            .catch(console.log);
-        }
-        function signOut() {
-        let auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-        console.log('User signed out.');
-        });
-        }
-        
-  
-  
-    </script>
 </body>
 </html>

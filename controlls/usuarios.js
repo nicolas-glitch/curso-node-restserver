@@ -16,7 +16,10 @@ const usuariosGet = async(req= request, res = response) => {
             ]);                 
                res.json({total,usuarios});
 };
+//mostrar usuario
+const usuarioGet = async(req= request, res = response) => {
 
+};
 
 // agregar usuario
 const usuariosPost = async (req, res) => {
@@ -35,12 +38,17 @@ const usuariosPost = async (req, res) => {
 
     //actualizar usuario
 const usuariosPut =  async(req, res) => {
+    
         const {id} = req.params;
-        const {_id,contraseña,google, ...resto} = req.body
+        const {_id,contraseña,google,estado,...resto} = req.body
+        // //verificar contraseña
+        // const usuario = Usuario.findById(id);
+        // console.log(usuario);
         //validar contra base de datos
         if(contraseña){
             const salt = becryptjs.genSaltSync();
             resto.contraseña = becryptjs.hashSync(contraseña,salt);
+            
         }
         const usuarioActualizado = await Usuario.findByIdAndUpdate(id,resto);
 
@@ -65,6 +73,7 @@ const usuariosDelete =  async(req, res) => {
 
 module.exports = {
     usuariosGet,
+    usuarioGet,
     usuariosPost,
     usuariosPut,
     usuariosPatch,

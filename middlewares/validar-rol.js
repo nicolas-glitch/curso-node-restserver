@@ -20,6 +20,7 @@ const validarRoles= (req=request,res=response,next) =>{
 
 }
 
+
 const validarTodos = (...roles)=>{
 
     return (req=request,res=response,next)=>{

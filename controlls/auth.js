@@ -22,17 +22,18 @@ const authPost = async(req,res) =>{
                 })
             }
 
-            //verificar si el usuario sigue activo
-            if(!usuario.estado){
-                return res.status(400).json({
-                    error:'el usuario no esta registrado'
-                })
-            }
+
             //verificar la contraseña
             const contraseñaCorrecta = becryptjs.compareSync(contraseña,usuario.contraseña);
             if(!contraseñaCorrecta){
                 return res.status(400).json({
-                    error:'el correo o la clave so incorrectos -clave'
+                    error:'el correo o la clave son incorrectos -clave'
+                })
+            }
+            //verificar si el usuario sigue activo
+            if(!usuario.estado){
+                return res.status(400).json({
+                    error:'el usuario no esta registrado'
                 })
             }
 
