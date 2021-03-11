@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/normalize.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <title>RestHospital</title>
+</head>
+<body>
+        <header class="header header__paciente">
+           <h1 class="header--h1 no-margin no-padding"><a href="../index.html">Hospital</a></h1>
+           <p class="header__paciente--principal no-margin no-padding">Citas</p>
+           <div class="icono">
+            <div class="icono__uno">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="68" height="68" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <circle cx="12" cy="7" r="4" />
+                    <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                </svg>
+            </div>
+            <div class="icono__dos">
+                <p class="header__paciente--p no-margin no-padding" id="nombre">USER</p>
+                <p class="header__paciente--p no-margin no-padding" id="rol">ROL</p>
+            </div>
+        </div>
+
+        </header>
+        <main class="main main__citas">
+            <!-- generar cita -->
+            <div class="generar__cita">
+                <div class="generar__texto">
+                    <input class="texto" type="text" placeholder="nombre Paciente" name="paciente">
+                </div>
+                <div class="generar__boton">
+                    <a id="boton" class="boton" href="./generar-cita.html">Generar cita</a>
+                </div>
+            </div>
+            <!-- primer paciente -->
+            <div class="pacientes">
+                <div class="paciente">
+                    <div class="paciente__usuario">
+                        <h2 class="paciente__h2 no-margin no-padding" id="nombre1">Null</h2>
+                    </div>
+                    <div class="paciente__nombreUsuario">
+                        <p class="paciente__p no-margin no-padding" >Numero: <span id="numeroPaciente1">Null</span></p>
+                    </div>
+                </div>
+                    <!-- segundo paciente -->
+                    <div class="paciente">
+                        <div class="paciente__usuario">
+                            <h2 class="paciente__h2 no-margin no-padding" id="nombre2">Null</h2>
+                        </div>
+                        <div class="paciente__nombreUsuario">
+                            <p class="paciente__p no-margin no-padding" >Numero: <span id="numeroPaciente2">Null</span></p>
+                        </div>
+                    </div>
+                    <!-- tercer paciente -->
+                    <div class="paciente">
+                        <div class="paciente__usuario">
+                            <h2 class="paciente__h2 no-margin no-padding" id="nombre3">Null</h2>
+                        </div>
+                        <div class="paciente__nombreUsuario">
+                            <p class="paciente__p no-margin no-padding" >Numero: <span id="numeroPaciente3">Null</span></p>
+                        </div>
+                    </div>
+                    <!-- final de la tercera cita -->
+
+            </div>
+
+            <!-- generar cita -->
+            <div class="generar__cita">
+                <div class="generar__texto">
+                    <input id="textoObservacion" class="texto" type="text" placeholder="nombre Paciente" name="paciente">
+                </div>
+                <div class="generar__boton">
+                    <a id="botonObservacion" class="boton" href="./generar-cita.html">Ver observaciones</a>
+                </div>
+            </div>
+        </main>
+        <footer class="fotter">
+                <p class="fotter--p no-margin no-padding">Derechos reservados a<span class="fotter--span">Hospital Primeros pasos al cielo</span></p>
+        </footer>
+        <script src="./login-javascript/login-administrador.js"></script>
+        
+</body>
+</html>

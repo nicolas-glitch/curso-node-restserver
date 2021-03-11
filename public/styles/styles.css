@@ -1,13 +1,27 @@
 :root{
     /* fuentes de texto */
-    --fuentetitulos: 'Akaya Telivigala', sans-serif;
+    --fuentetitulos: 'Shippori Mincho B1', serif ;
     /*Paleta de colores*/
-    --primario: #c90;
+    
     --blanco: #fff;
-    --gris: #aaa;
     --negro: #000;
-}
+    --azul: #27f;
+    --azulOscuro: #00f;
 
+}
+/*globales*/
+html{
+    box-sizing: border-box;
+    font-size: 62.5%; /*conversion de 1 rem igual a 10px*/
+}
+*,*:after,*:after{
+    box-sizing: inherit;
+
+}
+body{
+    font-size: 1.6rem;
+    line-height: 2;   
+}
 /*Globales*/
 .contenedor{
     max-width: 120rem;
@@ -60,146 +74,249 @@ img{
     font-size: 1.8rem;
     border: 1px solid #999;
 }
-/* contenedor */
-.contenedor{
+/* css de index */
+.header{
+    background-color: var(--azulOscuro);
     width: 100%;
-    height: 100%; 
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 10rem;
-    align-items: center;
-    background-image: url(../img/imagen-header.jpeg);
+    height: 10rem;
+    text-align: center;
+}
+.header--h1{
+    color: var(--blanco);
+    font-size: 5rem;
+    font-family: var(--fuentetitulos);
+    font-weight: 700;
+    letter-spacing: 1rem;
+    padding: 2rem;
+}
+header a{
+    color: var(--blanco);
+}
+.header--span{
+    font-size: 2rem;
+    font-family: var(--fuentetitulos);
+    font-weight: 400;
+    letter-spacing: normal;
+
+}
+.main{
+    background-image: url(../img/imagen-index.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center;
-    background-position-y:bottom; 
-}
-/* padres */
-.pa--header,.pa--nav{
     width: 100%;
-    text-align: center;
+    height: 68.9rem;
 }
-/* class de header*/
-.header{
-    margin-bottom: 8rem;
-
-}
-.header__h1{
-    font-size: 4rem;
-    padding: 1rem;
-    font-family: var(--fuentetitulos);
-    color: var(--blanco);
-    text-transform: uppercase;
-    letter-spacing: 1rem;
-    font-weight: 400;
-}
-.header__p{
-    font-size: 2rem;
-
-    font-family: var(--fuentetitulos);
-    color: var(--blanco);
-    font-weight: 400;
-}
-/* navegador*/
-.nav__p--logo{
-    margin-right: 20rem;
-}
-.nav__p{
+.contenedorHospital{
     display: grid;
+    gap: 1rem;
     grid-template-columns: repeat(2,1fr);
-    gap: 1rem;
 }
-.nav__p--span--m{
-    font-size: 3rem;
-    font-family: var(--fuentetitulos);
-    color: var(--blanco);
-    font-weight: 400;
-}
-.nav__p--span{
-    font-size: 2rem;
-    font-family: var(--fuentetitulos);
-    color: var(--blanco);
-    font-weight: 400;
-}
-/* navegador enlaces*/
-.nav{
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 1rem;
-}
-.nav__enlaces{
-    font-size: 2rem;
-    font-family: var(--fuentetitulos);
-    color: var(--blanco);
-    font-weight: 400;
-}
-.nav__enlaces:hover{
-    color: var(--primario);
-}
-/* formularios */
-.formularios{
+.contenedorHospital__uno{
+    padding: 2rem;
     text-align: center;
-    background-color: var(--blanco);
-    border: 1px solid var(--gris);
-    margin: -5rem 9rem;
 }
-.formulario__dos{
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin: 1rem;
-}
-.formulario__dos--h2{
+.contenedorHospital__uno--h2{
     font-size: 4rem;
     font-family: var(--fuentetitulos);
     font-weight: 700;
-    color: var(--primario);
+    margin-bottom:1rem;
+    padding: 1rem;
 }
-.formulario__dos--label{
+.contenedorHospital__uno--p{
     font-size: 2rem;
     font-family: var(--fuentetitulos);
     font-weight: 400;
-    color: var(--primario);
-    margin-right: 70rem;
 }
-.formulario__dos--input{
-    padding: 0.5rem;
-    border: 1px solid var(--primario);
-    line-height: 1.15;
+.contenedorHospital__dos{
+    padding: 2rem;
 }
 
-.formulario__dos--button{
+.form{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    background: var(--blanco);
+}
+.form--h2{
+    color: var(--azul);
+    text-align: center;
+}
+.form--h2{
+    font-size: 4rem;
+    font-family: var(--fuentetitulos);
+    font-weight: 700;
+}
+.form--label{
+    font-size: 2rem;
+    font-family: var(--fuentetitulos);
+    font-weight: 700;
+    color: var(--azul);
+    margin-bottom: 1rem;
+}
+.form--input{
+    border: 1px solid var(--azul);
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+.form--input::placeholder{
     color: var(--negro);
-    background-color: var(--primario);
+    font-size: 1.3rem;
 }
-.formulario__dos--button:hover{
+.form--input:hover{
+    border: 1px solid var(--azulOscuro);
+
+}
+.form--button{
+    display: block;
+    text-align: center;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+    font-family: var(--fuentetitulos);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.8rem;
+    border: 1px solid #999;
+    background: var(--azul);
+    color: var(--blanco);
+}
+.form--button:hover{
     cursor: pointer;
+    background: var(--azulOscuro);
 }
-/* footer */
-.p--footer{
-    margin-top: 10rem;
+.form--p{
+    font-family: var(--fuentetitulos);
+    font-size: 2rem;
+    font-weight: 400;
+    text-align: center;
 }
-.nav__footer{
-    background-color: var(--primario);
+.fotter{
+    background: var(--azulOscuro);
+    text-align: center;
+}
+.fotter--p{
+    font-size: 3rem;
+    font-family: var(--fuentetitulos);
+    font-weight: 700;
+    color: var(--blanco);
+}
+.fotter--span{
+    font-size: 2rem;
+    font-family: var(--fuentetitulos);
+    font-weight: 400;
+
+}
+.crear__usuario{
+    text-align: center;
+    padding: 1rem;
+}
+.crear__usuario--a{
+    font-size: 2rem;
+    font-family: var(--fuentetitulos);
+    font-weight: 400;
+    color: var(--azulOscuro);
+}
+/* css de crear usuario */
+.contenedor__crear{
+    padding: 4rem;
+}
+
+/* css para página paciente*/
+.header__paciente{
+    
+    text-align:center;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:2rem;
+}
+.header__paciente--principal{
+    font-size: 5rem;
+    font-family: var(--fuentetitulos);
+    color: var(--blanco);
+    letter-spacing: 2rem;
+    font-weight: 700;
+}
+.header__paciente--p{
+    font-size: 2rem;
+    font-family: var(--fuentetitulos);
+    font-weight: 400;
+    text-transform: uppercase;
+    padding: 1rem;
+    margin-left: -5rem;
+}
+.icono{
+    display: flex;
+    justify-content: space-evenly;
+    color: var(--blanco);
+}
+.icono__uno{
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+}
+.icono__dos{
+    margin-top: -1rem;
+    display: flex;
+    flex-direction: column;
+    
+}
+/* main de la página paciente*/
+.main__citas{
+    height: 100%;
+}
+.pacientes{
+    padding: 3rem;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+}
+.paciente{
+    background-color: var(--blanco);
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: repeat(4,1fr);
+    gap: 1rem;
+    text-align: center;
+    border: 1px solid var(--negro);
+}
+.paciente__cita,.paciente__usuario,.paciente__citas,.paciente__nombreUsuario{
+    grid-column: 1/3;
+}
+.paciente__nombreUsuario{
+    grid-row: 3/4;
+}
+
+.agregar__noveda{
     display: flex;
     justify-content: space-evenly;
 }
-.nav__footer--enlaces{
-    padding: 1rem;
+.boton{
+    background-color: var(--azulOscuro);
     color: var(--blanco);
-    font-size: 2rem;
-    font-family: var(--fuentetitulos);
-    font-weight: 400;
 }
-.nav__footer--enlaces:hover{
-    background-color: var(--blanco);
-    color: var(--primario);
-    border-bottom: 2px solid var(--primario);
-    border-top: 2px solid var(--primario);
+.barra{
+    width: 40rem;
+    padding: 1rem;
+    border: 1px solid var(--azulOscuro);
 }
-.nav__footer--h1{
-    text-align: center;
-    font-size: 3rem;
-    font-family: var(--fuentetitulos);
-    font-weight: 400;
+/* generar cita */
+.generar__cita{
+    display: flex;
+    justify-content: space-evenly;
 }
+.generar__texto,.generar__boton{
+    padding: 1rem;
+    
+}
+.texto{
+    border: 1px solid var(--azul);
+    padding: 1rem;
+    width: 30rem;
+    transition: 1s;
+}
+.texto:hover{
+    border: 1px solid var(--azulOscuro);
+    padding: 2rem;
+    width: 50rem;
+    transition: 1s;
+}
+

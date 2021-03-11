@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/normalize.css">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <title>Crear usuario</title>
+</head>
+<body>
+    <header class="header ">
+        <a href="../index.html"><h1 class="header--h1 no-margin no-padding">Hospital<span class="header--span">Primeros pasos al cielo</span></h1></a>
+    </header>
+    <main class="main">
+            <!-- contenedor del login del hospital-->
+            <div class="contenedor__crear">
+                <form class="form">
+                    <h2 class="form--h2">Crear novedad</h2>
+                    <label class="form--label">observacion</label>
+                    <input class="form--input"  type="text" name="observacion" placeholder="observacion">
+                    <label class="form--label">numero</label>
+                    <input class="form--input"  type="number" name="numero" placeholder="numero">
+                    <button class="form--button" type="submit">
+                        Crear novedad
+                    </button>
+                    <p class="form--p" id="mensaje"></p>      
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer class="fotter">
+            <p class="fotter--p no-margin no-padding">Derechos reservados a<span class="fotter--span">Hospital Primeros pasos al cielo</span></p>
+    </footer>
+    <script src="./login-javascript/generar-novedad.js"></script>
+</body>
+</html>
